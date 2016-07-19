@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
+  before_filter :require_login, except: [ :show, :index ]
+
   def create
     @article = Article.new(article_params)
     @article.save
